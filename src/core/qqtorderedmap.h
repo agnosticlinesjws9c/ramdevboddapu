@@ -429,8 +429,8 @@ private:
         return true;
 #endif
     }
-public:
 
+public:
     //template <class Key, class T>
     inline QOrderedMap ( const QOrderedMap<Key, T>& other )
     {
@@ -839,12 +839,14 @@ public:
         return it;
     }
 
+private:
     //template <class Key, class T>
     Q_OUTOFLINE_TEMPLATE void detach_helper()
     {
         d->detach();
     }
 
+public:
     //template <class Key, class T>
     Q_OUTOFLINE_TEMPLATE QList<Key> uniqueKeys() const
     {
@@ -974,6 +976,7 @@ public:
         return amap;
     }
 };
+
 template <class Key, class T>
 class QQTSHARED_EXPORT QOrderedMultiMap : public QOrderedMap<Key, T>
 {
@@ -1042,8 +1045,8 @@ QOrderedMultiMap ( QOrderedMap<Key, T>&& other ) Q_DECL_NOTHROW : QOrderedMap<Ke
 private:
     T& operator[] ( const Key& key );
     const T operator[] ( const Key& key ) const;
-public:
 
+public:
     //template <class Key, class T>
     Q_INLINE_TEMPLATE bool contains ( const Key& key, const T& value ) const
     {
@@ -1086,6 +1089,7 @@ public:
         return n;
     }
 };
+
 Q_DECLARE_ASSOCIATIVE_ITERATOR ( OrderedMap )
 Q_DECLARE_MUTABLE_ASSOCIATIVE_ITERATOR ( OrderedMap )
 

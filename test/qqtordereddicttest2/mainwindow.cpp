@@ -8,7 +8,8 @@
 // MSVC2015，不使用QQtOrderedDictionary就可以了，其他模块正常。
 
 // 2021年4月23日
-// 已解决
+// 已解决。
+// MSVC2015，QQtOrderedDictionary导出正常。
 
 
 #include <qqtorderedmap.h>
