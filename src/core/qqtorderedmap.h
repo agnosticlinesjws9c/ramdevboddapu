@@ -525,7 +525,7 @@ public:
     }
 
     //template <class Key, class T>
-    Q_INLINE_TEMPLATE typename iterator insert ( const Key& akey,
+    Q_INLINE_TEMPLATE typename QOrderedMap<Key, T>::iterator insert ( const Key& akey,
             const T& avalue )
     {
         detach();
@@ -552,7 +552,7 @@ public:
 
     //need more test
     //template <class Key, class T>
-    typename iterator insert ( const_iterator pos, const Key& akey,
+    typename QOrderedMap<Key, T>::iterator insert ( const_iterator pos, const Key& akey,
                                                                          const T& avalue )
     {
         detach();
@@ -590,7 +590,7 @@ public:
     }
 
     //template <class Key, class T>
-    Q_INLINE_TEMPLATE typename iterator insertMulti ( const Key& akey,
+    Q_INLINE_TEMPLATE typename QOrderedMap<Key, T>::iterator insertMulti ( const Key& akey,
             const T& avalue )
     {
         detach();
@@ -608,7 +608,7 @@ public:
 
     //need more test
     //template <class Key, class T>
-    typename iterator insertMulti ( const_iterator pos, const Key& akey,
+    typename QOrderedMap<Key, T>::iterator insertMulti ( const_iterator pos, const Key& akey,
                                                                               const T& avalue )
     {
         Node n;
@@ -634,7 +634,7 @@ public:
 
 
     //template <class Key, class T>
-    Q_INLINE_TEMPLATE typename const_iterator constFind (
+    Q_INLINE_TEMPLATE typename QOrderedMap<Key, T>::const_iterator constFind (
         const Key& akey ) const
     {
         for ( typename QList<Node>::ConstIterator itor = d->constBegin();
@@ -651,13 +651,13 @@ public:
     }
 
     //template <class Key, class T>
-    Q_INLINE_TEMPLATE typename const_iterator find ( const Key& akey ) const
+    Q_INLINE_TEMPLATE typename QOrderedMap<Key, T>::const_iterator find ( const Key& akey ) const
     {
         return constFind ( akey );
     }
 
     //template <class Key, class T>
-    Q_INLINE_TEMPLATE typename iterator find ( const Key& akey )
+    Q_INLINE_TEMPLATE typename QOrderedMap<Key, T>::iterator find ( const Key& akey )
     {
         detach();
         for ( typename QList<Node>::Iterator itor = d->begin();
@@ -690,7 +690,7 @@ public:
 
     //need
     //template <class Key, class T>
-    QPair<typename iterator, typename iterator>
+    QPair<typename QOrderedMap<Key, T>::iterator, typename QOrderedMap<Key, T>::iterator>
     equal_range ( const Key& akey )
     {
         detach();
@@ -727,7 +727,7 @@ public:
     }
 
     //template <class Key, class T>
-    QPair<typename const_iterator, typename const_iterator>
+    QPair<typename QOrderedMap<Key, T>::const_iterator, typename QOrderedMap<Key, T>::const_iterator>
     equal_range ( const Key& akey ) const
     {
         Node* firstNode, *lastNode;
@@ -828,7 +828,7 @@ public:
     }
 
     //template <class Key, class T>
-    Q_OUTOFLINE_TEMPLATE typename iterator erase ( iterator it )
+    Q_OUTOFLINE_TEMPLATE typename QOrderedMap<Key, T>::iterator erase ( iterator it )
     {
         if ( it == iterator ( d->end(), d ) )
             return it;
