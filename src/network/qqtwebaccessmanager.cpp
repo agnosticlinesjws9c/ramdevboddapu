@@ -509,8 +509,10 @@ QQtWebAccessManager::QQtWebAccessManager ( QObject* parent ) : QNetworkAccessMan
     connect ( this, SIGNAL ( authenticationRequired ( QNetworkReply*, QAuthenticator* ) ),
               this, SLOT ( authenticationRequired ( QNetworkReply*, QAuthenticator* ) ) );
 
+#ifndef QT_NO_NETWORKPROXY
     connect ( this, SIGNAL ( proxyAuthenticationRequired ( QNetworkProxy, QAuthenticator* ) ),
               this, SLOT ( proxyAuthenticationRequired ( QNetworkProxy, QAuthenticator* ) ) );
+#endif
 
 #ifdef __SSLSUPPORT__
     connect ( this,  SIGNAL ( sslErrors ( QNetworkReply*, QList<QSslError> ) ),
@@ -1130,10 +1132,12 @@ void QQtWebAccessManager::authenticationRequired ( QNetworkReply* r, QAuthentica
     pline() << r << a;
 }
 
+#ifndef QT_NO_NETWORKPROXY
 void QQtWebAccessManager::proxyAuthenticationRequired ( QNetworkProxy p, QAuthenticator* a )
 {
     //pline() << p.hostName() << a;
 }
+#endif
 
 #ifdef __SSLSUPPORT__
 void QQtWebAccessManager::sslErrors ( QNetworkReply* r, QList<QSslError> e )

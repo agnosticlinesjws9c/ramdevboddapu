@@ -5,8 +5,11 @@
 #include <QNetworkReply>
 #include <QNetworkRequest>
 
+#ifndef QT_NO_NETWORKPROXY
 //import this struct will not build fail
 #include <QNetworkProxy>
+#endif
+
 #ifdef __SSLSUPPORT__
 #include <QSslError>
 #endif
@@ -290,7 +293,9 @@ public slots:
 private slots:
     void finished ( QNetworkReply* reply );
     void authenticationRequired ( QNetworkReply*, QAuthenticator* );
+#ifndef QT_NO_NETWORKPROXY
     void proxyAuthenticationRequired ( QNetworkProxy, QAuthenticator* );
+#endif
 #ifdef __SSLSUPPORT__
     void sslErrors ( QNetworkReply*, QList<QSslError> );
 #endif
