@@ -1,0 +1,10 @@
+==============================================================================
+1. qqtdicthelper.h
+
+typedef QQtDictionaryMutableMapIterator QDictionaryMutableMapIterator
+#define QDictionaryMutableMapIterator QQtDictionaryMutableMapIterator
+这两者，在APP中，MSVC下都无法编译成功。
+
+建议：MSVC环境下，暂时不要使用qqtdicthelper.h。
+修正：MSVC环境下注释相关代码，qqtdicthelper.h，可以用部分功能。
+决定：MSVC环境，暂时不要使用qqtdicthelper.h。
