@@ -1,4 +1,4 @@
-﻿#include "qqtbodymouselocker_win.h"
+#include "qqtbodymouselocker_win.h"
 #include <QWidget>
 #include <QEvent>
 #include <QMouseEvent>
@@ -69,7 +69,11 @@ QRect QQtBodyMouseLockerPrivate::getTargetRect ( QWidget* target )
     p0 = w.mapToGlobal ( p0 );
     p1 = w.mapToGlobal ( p1 );
 
+#if QT_VERSION > QT_VERSION_CHECK(5, 5, 1)
     qreal ratio = w.devicePixelRatioF();
+#else
+    qreal ratio = 1.0;
+#endif
     QRect r0 = QRect ( p0, p1 );
     QRect qr0 = QRect ( QPoint ( r0.left() * ratio, r0.top() * ratio ),
                         QPoint ( r0.right() * ratio, r0.bottom() * ratio ) );
@@ -95,7 +99,11 @@ QRect QQtBodyMouseLockerPrivate::getSourceRect ( QWidget* target )
     p1 = w.mapToGlobal ( p1 );
     QRect r0 = QRect ( p0, p1 );
 
+#if QT_VERSION > QT_VERSION_CHECK(5, 5, 1)
     qreal ratio = w.devicePixelRatioF();
+#else
+    qreal ratio = 1.0;
+#endif
     QRect qr0 = QRect ( QPoint ( r0.left() * ratio, r0.top() * ratio ), QPoint ( r0.right() * ratio, r0.bottom() * ratio ) );
     return qr0;
 }

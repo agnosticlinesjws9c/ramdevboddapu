@@ -65,7 +65,11 @@ void QQtBodyMouseWheelScalingEffect::wheelEvent ( QWheelEvent* event, QWidget* t
         p1 = w.mapToGlobal ( p1 );
         QRect r0 = QRect ( p0, p1 );
 #ifdef __DESKTOP_WIN__
+#if QT_VERSION > QT_VERSION_CHECK(5, 5, 1)
         qreal ratio = w.devicePixelRatioF();
+#else
+        qreal ratio = 1.0;
+#endif
 #else
         qreal ratio = 1;
 #endif

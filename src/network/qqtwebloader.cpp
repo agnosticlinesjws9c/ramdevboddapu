@@ -40,9 +40,15 @@ QQtNetworkReply& QQtNetworkReply::operator = ( const QNetworkReply& other )
 #if QT_VERSION > QT_VERSION_CHECK(5, 9, 0)
     for ( int i = ( int ) QNetworkRequest::HttpStatusCodeAttribute;
           i <= ( int ) QNetworkRequest::RedirectPolicyAttribute; i++ )
-#else
+#elif QT_VERSION > QT_VERSION_CHECK(5, 6, 3)
     for ( int i = ( int ) QNetworkRequest::HttpStatusCodeAttribute;
           i <= ( int ) QNetworkRequest::HTTP2WasUsedAttribute; i++ )
+#elif QT_VERSION > QT_VERSION_CHECK(5, 5, 1)
+    for ( int i = ( int ) QNetworkRequest::HttpStatusCodeAttribute;
+          i <= ( int ) QNetworkRequest::FollowRedirectsAttribute; i++ )
+#else
+    for ( int i = ( int ) QNetworkRequest::HttpStatusCodeAttribute;
+          i <= ( int ) QNetworkRequest::EmitAllUploadProgressSignalsAttribute; i++ )
 #endif
     {
         QNetworkRequest::Attribute ii = ( QNetworkRequest::Attribute ) i;
