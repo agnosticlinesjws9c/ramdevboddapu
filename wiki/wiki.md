@@ -6,7 +6,8 @@
 
 ## How to build LibQQt  
 
-[如何编译LibQQt](HowtoBuildLibQQt.md)  
+[如何编译LibQQt](How-to-Build-LibQQt.md)  
+[如何配置环境和编译LibQQt](LibQQt's-Need-Config-Environ-and-Building.md)  
 
 ## QQt On Android  
 
