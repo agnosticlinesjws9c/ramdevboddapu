@@ -15,7 +15,7 @@ class QQtDictionary;
 class QQtOrderedDictionary;
 typedef QOrderedMap<QString, QQtOrderedDictionary> QQtOrderedDictionaryMap;
 typedef QOrderedMapIterator<QString, QQtOrderedDictionary> QQtOrderedDictionaryMapIterator;
-typedef QMutableMapIterator<QString, QQtOrderedDictionary> QQtOrderedDictionaryMutableMapIterator;
+typedef QMutableOrderedMapIterator<QString, QQtOrderedDictionary> QQtOrderedDictionaryMutableMapIterator;
 
 typedef QList<QQtOrderedDictionary> QQtOrderedDictionaryList;
 typedef QListIterator<QQtOrderedDictionary> QQtOrderedDictionaryListIterator;

@@ -62,11 +62,11 @@ inline QOrderedMap() Q_DECL_NOTHROW : d ( &_d ) { }
             insert ( it->first, it->second );
     }
 #endif
-    QOrderedMap ( const QOrderedMap<Key, T>& other );
+    //QOrderedMap ( const QOrderedMap<Key, T>& other );
 
     inline ~QOrderedMap() { }
 
-    QOrderedMap<Key, T>& operator= ( const QOrderedMap<Key, T>& other );
+    //QOrderedMap<Key, T>& operator= ( const QOrderedMap<Key, T>& other );
 #ifdef Q_COMPILER_RVALUE_REFS
     inline QOrderedMap ( QOrderedMap<Key, T>&& other ) Q_DECL_NOTHROW
 : d ( other.d ) {
@@ -77,10 +77,10 @@ inline QOrderedMap() Q_DECL_NOTHROW : d ( &_d ) { }
     { QOrderedMap moved ( std::move ( other ) ); swap ( moved ); return *this; }
 #endif
     inline void swap ( QOrderedMap<Key, T>& other ) Q_DECL_NOTHROW { qSwap ( _d, other._d ); }
-    explicit QOrderedMap ( const typename std::map<Key, T>& other );
-    std::map<Key, T> toStdMap() const;
+    //explicit QOrderedMap ( const typename std::map<Key, T>& other );
+    //std::map<Key, T> toStdMap() const;
 
-    bool operator== ( const QOrderedMap<Key, T>& other ) const;
+    //bool operator== ( const QOrderedMap<Key, T>& other ) const;
     inline bool operator!= ( const QOrderedMap<Key, T>& other ) const { return ! ( *this == other ); }
 
     inline int size() const { return d->size(); }
@@ -101,23 +101,23 @@ inline QOrderedMap() Q_DECL_NOTHROW : d ( &_d ) { }
 #endif
     inline bool isSharedWith ( const QOrderedMap<Key, T>& other ) const { return d == other.d; }
 
-    void clear();
+    //void clear();
 
-    int remove ( const Key& key );
-    T take ( const Key& key );
+    //int remove ( const Key& key );
+    //T take ( const Key& key );
 
-    bool contains ( const Key& key ) const;
-    const Key key ( const T& value, const Key& defaultKey = Key() ) const;
-    const T value ( const Key& key, const T& defaultValue = T() ) const;
-    T& operator[] ( const Key& key );
-    const T operator[] ( const Key& key ) const;
+    //bool contains ( const Key& key ) const;
+    //const Key key ( const T& value, const Key& defaultKey = Key() ) const;
+    //const T value ( const Key& key, const T& defaultValue = T() ) const;
+    //T& operator[] ( const Key& key );
+    //const T operator[] ( const Key& key ) const;
 
-    QList<Key> uniqueKeys() const;
-    QList<Key> keys() const;
-    QList<Key> keys ( const T& value ) const;
-    QList<T> values() const;
-    QList<T> values ( const Key& key ) const;
-    int count ( const Key& key ) const;
+    //QList<Key> uniqueKeys() const;
+    //QList<Key> keys() const;
+    //QList<Key> keys ( const T& value ) const;
+    //QList<T> values() const;
+    //QList<T> values ( const Key& key ) const;
+    //int count ( const Key& key ) const;
 
     inline const Key& firstKey() const { Q_ASSERT ( !isEmpty() ); return constBegin().key(); }
     inline const Key& lastKey() const { Q_ASSERT ( !isEmpty() ); return ( constEnd() - 1 ).key(); }
@@ -386,24 +386,24 @@ inline QOrderedMap() Q_DECL_NOTHROW : d ( &_d ) { }
     inline const_iterator cend() const { return const_iterator ( d->end() ); }
     inline key_iterator keyBegin() const { return key_iterator ( begin() ); }
     inline key_iterator keyEnd() const { return key_iterator ( end() ); }
-    iterator erase ( iterator it );
+    //iterator erase ( iterator it );
 
     // more Qt
     typedef iterator Iterator;
     typedef const_iterator ConstIterator;
     inline int count() const { return d->size(); }
-    iterator find ( const Key& key );
-    const_iterator find ( const Key& key ) const;
-    const_iterator constFind ( const Key& key ) const;
-    iterator lowerBound ( const Key& key );
-    const_iterator lowerBound ( const Key& key ) const;
-    iterator upperBound ( const Key& key );
-    const_iterator upperBound ( const Key& key ) const;
-    iterator insert ( const Key& key, const T& value );
-    iterator insert ( const_iterator pos, const Key& key, const T& value );
-    iterator insertMulti ( const Key& key, const T& value );
-    iterator insertMulti ( const_iterator pos, const Key& akey, const T& avalue );
-    QOrderedMap<Key, T>& unite ( const QOrderedMap<Key, T>& other );
+    //iterator find ( const Key& key );
+    //const_iterator find ( const Key& key ) const;
+    //const_iterator constFind ( const Key& key ) const;
+    //iterator lowerBound ( const Key& key );
+    //const_iterator lowerBound ( const Key& key ) const;
+    //iterator upperBound ( const Key& key );
+    //const_iterator upperBound ( const Key& key ) const;
+    //iterator insert ( const Key& key, const T& value );
+    //iterator insert ( const_iterator pos, const Key& key, const T& value );
+    //iterator insertMulti ( const Key& key, const T& value );
+    //iterator insertMulti ( const_iterator pos, const Key& akey, const T& avalue );
+    //QOrderedMap<Key, T>& unite ( const QOrderedMap<Key, T>& other );
 
     // STL compatibility
     typedef Key key_type;
@@ -411,15 +411,15 @@ inline QOrderedMap() Q_DECL_NOTHROW : d ( &_d ) { }
     typedef qptrdiff difference_type;
     typedef int size_type;
     inline bool empty() const { return isEmpty(); }
-    QPair<iterator, iterator> equal_range ( const Key& akey );
-    QPair<const_iterator, const_iterator> equal_range ( const Key& akey ) const;
+    //QPair<iterator, iterator> equal_range ( const Key& akey );
+    //QPair<const_iterator, const_iterator> equal_range ( const Key& akey ) const;
 
 #ifdef Q_MAP_DEBUG
-    void dump() const;
+    //void dump() const;
 #endif
 
 private:
-    void detach_helper();
+    //void detach_helper();
     bool isValidIterator ( const const_iterator& ci ) const {
 #if defined(QT_DEBUG) && !defined(Q_MAP_NO_ITERATOR_DEBUG)
         typename QList<Node>::ConstIterator n = ci;
@@ -429,551 +429,551 @@ private:
         return true;
 #endif
     }
-};
+public:
 
-template <class Key, class T>
-inline QOrderedMap<Key, T>::QOrderedMap ( const QOrderedMap<Key, T>& other )
-{
-    _d = other._d;
-    d = &_d;
-}
-
-template <class Key, class T>
-Q_INLINE_TEMPLATE QOrderedMap<Key, T>& QOrderedMap<Key, T>::operator= ( const QOrderedMap<Key, T>& other )
-{
-    if ( _d != other._d )
+    //template <class Key, class T>
+    inline QOrderedMap ( const QOrderedMap<Key, T>& other )
     {
-        QOrderedMap<Key, T> tmp ( other );
-        tmp.swap ( *this );
+        _d = other._d;
+        d = &_d;
     }
-    return *this;
-}
 
-template <class Key, class T>
-Q_INLINE_TEMPLATE void QOrderedMap<Key, T>::clear()
-{
-    *this = QOrderedMap<Key, T>();
-}
-
-QT_WARNING_PUSH
-QT_WARNING_DISABLE_CLANG ( "-Wreturn-stack-address" )
-
-template <class Key, class T>
-Q_INLINE_TEMPLATE const T QOrderedMap<Key, T>::value ( const Key& akey, const T& adefaultValue ) const
-{
-    for ( typename QList<Node>::Iterator itor = d->begin();
-          itor != d->end(); itor++ )
+    //template <class Key, class T>
+    Q_INLINE_TEMPLATE QOrderedMap<Key, T>& operator= ( const QOrderedMap<Key, T>& other )
     {
-        Node* n = &*itor;
-        if ( n->first == akey )
+        if ( _d != other._d )
         {
-            return n->second;
+            QOrderedMap<Key, T> tmp ( other );
+            tmp.swap ( *this );
+        }
+        return *this;
+    }
+
+    //template <class Key, class T>
+    Q_INLINE_TEMPLATE void clear()
+    {
+        *this = QOrderedMap<Key, T>();
+    }
+
+    QT_WARNING_PUSH
+    QT_WARNING_DISABLE_CLANG ( "-Wreturn-stack-address" )
+
+    //template <class Key, class T>
+    Q_INLINE_TEMPLATE const T value ( const Key& akey, const T& adefaultValue = T() ) const
+    {
+        for ( typename QList<Node>::Iterator itor = d->begin();
+              itor != d->end(); itor++ )
+        {
+            Node* n = &*itor;
+            if ( n->first == akey )
+            {
+                return n->second;
+            }
+        }
+        return adefaultValue;
+    }
+
+    QT_WARNING_POP
+
+    //template <class Key, class T>
+    Q_INLINE_TEMPLATE const T operator[] ( const Key& akey ) const
+    {
+        return value ( akey );
+    }
+
+    //template <class Key, class T>
+    Q_INLINE_TEMPLATE T& operator[] ( const Key& akey )
+    {
+        detach();
+        for ( typename QList<Node>::Iterator itor = d->begin();
+              itor != d->end(); itor++ )
+        {
+            Node* n = &*itor;
+            if ( n->first == akey )
+            {
+                return n->second;
+            }
+        }
+        return *insert ( akey, T() );
+    }
+
+    //template <class Key, class T>
+    Q_INLINE_TEMPLATE int count ( const Key& akey ) const
+    {
+        int cnt = 0;
+        for ( typename QList<Node>::Iterator itor = d->begin();
+              itor != d->end(); itor++ )
+        {
+            Node* n = &*itor;
+            if ( n->first == akey )
+                cnt++;
+        }
+        return cnt;
+    }
+
+    //template <class Key, class T>
+    bool contains ( const Key& akey ) const
+    {
+        for ( typename QList<Node>::Iterator itor = d->begin();
+              itor != d->end(); itor++ )
+        {
+            Node* n = &*itor;
+            if ( n->first == akey )
+                return true;
+        }
+        return false;
+    }
+
+    //template <class Key, class T>
+    Q_INLINE_TEMPLATE typename iterator insert ( const Key& akey,
+            const T& avalue )
+    {
+        detach();
+
+        Node n;
+        n.first = akey;
+        n.second = avalue;
+
+        for ( int i = 0 ; i < d->size(); i++ )
+        {
+            Node* n_now = &d->operator [] ( i );
+            if ( n_now->first == akey )
+            {
+                *n_now = n;
+                return iterator ( n_now, d );
+            }
+        }
+
+        d->push_back ( n );
+        Node* z = &d->last();
+
+        return iterator ( z, d );
+    }
+
+    //need more test
+    //template <class Key, class T>
+    typename iterator insert ( const_iterator pos, const Key& akey,
+                                                                         const T& avalue )
+    {
+        detach();
+
+        Node n;
+        n.first = akey;
+        n.second = avalue;
+
+        for ( int i = 0 ; i < d->size(); i++ )
+        {
+            Node* n_now = &d->operator [] ( i );
+            if ( n_now->first == akey )
+            {
+                *n_now = n;
+                return iterator ( n_now, d );
+            }
+        }
+
+        for ( typename QList<Node>::Iterator itor = d->begin();
+              itor != d->end(); itor++ )
+        {
+            Node* n_before = itor;
+            const_iterator p ( n_before, d );
+            if ( p == pos )
+            {
+                typename QList<Node>::Iterator i = d->insert ( itor, n );
+                Node* cur = &*i;
+                return iterator ( cur, d );
+            }
+        }
+
+        d->push_back ( n );
+        Node* z = &d->last();
+        return iterator ( z, d );
+    }
+
+    //template <class Key, class T>
+    Q_INLINE_TEMPLATE typename iterator insertMulti ( const Key& akey,
+            const T& avalue )
+    {
+        detach();
+    #if 0
+        Node n;
+        n.first = akey;
+        n.second = avalue;
+        d->push_back ( n );
+
+        Node* z = d->last();
+        return iterator ( z );
+    #endif
+        return insert ( akey, avalue );
+    }
+
+    //need more test
+    //template <class Key, class T>
+    typename iterator insertMulti ( const_iterator pos, const Key& akey,
+                                                                              const T& avalue )
+    {
+        Node n;
+        n.first = akey;
+        n.second = avalue;
+
+        for ( typename QList<Node>::Iterator itor = d->begin();
+              itor != d->end(); itor++ )
+        {
+            Node* n_before = &*itor;
+            const_iterator p ( n_before );
+            if ( p == pos )
+            {
+                typename QList<Node>::Iterator i = d->insert ( itor, n );
+                Node* n_now = &*i;
+                return iterator ( n_now, d );
+            }
+        }
+        d->push_back ( n );
+        Node* n_now = &d->last();
+        return iterator ( n_now, d );
+    }
+
+
+    //template <class Key, class T>
+    Q_INLINE_TEMPLATE typename const_iterator constFind (
+        const Key& akey ) const
+    {
+        for ( typename QList<Node>::ConstIterator itor = d->constBegin();
+              itor != d->constEnd(); itor++ )
+        {
+            Node* n = &*itor;
+            if ( n->first == akey )
+            {
+                return const_iterator ( n, d );
+            }
+        }
+
+        return constEnd();
+    }
+
+    //template <class Key, class T>
+    Q_INLINE_TEMPLATE typename const_iterator find ( const Key& akey ) const
+    {
+        return constFind ( akey );
+    }
+
+    //template <class Key, class T>
+    Q_INLINE_TEMPLATE typename iterator find ( const Key& akey )
+    {
+        detach();
+        for ( typename QList<Node>::Iterator itor = d->begin();
+              itor != d->end(); itor++ )
+        {
+            Node* n = &*itor;
+            if ( n->first == akey )
+            {
+                return iterator ( n, d );
+            }
+        }
+
+        return end();
+    }
+
+    //need
+    //template <class Key, class T>
+    Q_INLINE_TEMPLATE QOrderedMap<Key, T>& unite ( const QOrderedMap<Key, T>& other )
+    {
+        QOrderedMap<Key, T> copy ( other );
+        const_iterator it = copy.constEnd();
+        const const_iterator b = copy.constBegin();
+        while ( it != b )
+        {
+            --it;
+            insertMulti ( it.key(), it.value() );
+        }
+        return *this;
+    }
+
+    //need
+    //template <class Key, class T>
+    QPair<typename iterator, typename iterator>
+    equal_range ( const Key& akey )
+    {
+        detach();
+
+        Node* firstNode, *lastNode;
+
+        for ( typename QList<Node>::Iterator itor = d->begin();
+              itor != d->end(); itor++ )
+        {
+            Node* n = &*itor;
+            if ( n->first == akey )
+            {
+                firstNode = n;
+                break;
+            }
+        }
+
+        if ( iterator ( firstNode, d ) == end() )
+            return QPair<iterator, iterator> ( end(), end() );
+
+        for ( typename QList<Node>::Iterator itor = d->end() - 1;
+              itor >= d->begin(); itor-- )
+        {
+            Node* n = &*itor;
+            if ( n->first == akey )
+            {
+                lastNode = n;
+                break;
+            }
+        }
+
+        //d->nodeRange ( akey, &firstNode, &lastNode );
+        return QPair<iterator, iterator> ( iterator ( firstNode, d ), iterator ( lastNode, d ) );
+    }
+
+    //template <class Key, class T>
+    QPair<typename const_iterator, typename const_iterator>
+    equal_range ( const Key& akey ) const
+    {
+        Node* firstNode, *lastNode;
+
+        for ( typename QList<Node>::ConstIterator itor = d->constBegin();
+              itor != d->constEnd(); itor++ )
+        {
+            Node* n = &*itor;
+            if ( n->first == akey )
+            {
+                firstNode = n;
+                break;
+            }
+        }
+
+        if ( iterator ( firstNode, d ) == constEnd() )
+            return qMakePair ( constEnd(), constEnd() );
+
+        for ( typename QList<Node>::Iterator itor = d->constEnd() - 1;
+              itor >= d->constBegin(); itor-- )
+        {
+            Node* n = &*itor;
+            if ( n->first == akey )
+            {
+                lastNode = n;
+                break;
+            }
+        }
+
+        //d->nodeRange ( akey, &firstNode, &lastNode );
+        return qMakePair ( const_iterator ( firstNode, d ), const_iterator ( lastNode, d ) );
+    }
+
+    #ifdef Q_MAP_DEBUG
+    //template <class Key, class T>
+    void dump() const
+    {
+        for ( typename QList<Node>::ConstIterator itor = d->constBegin();
+              itor != d->constEnd(); itor++ )
+        {
+            const Node* n = &*itor;
+            qDebug() << n->first << n->second;
         }
     }
-    return adefaultValue;
-}
+    #endif
 
-QT_WARNING_POP
-
-template <class Key, class T>
-Q_INLINE_TEMPLATE const T QOrderedMap<Key, T>::operator[] ( const Key& akey ) const
-{
-    return value ( akey );
-}
-
-template <class Key, class T>
-Q_INLINE_TEMPLATE T& QOrderedMap<Key, T>::operator[] ( const Key& akey )
-{
-    detach();
-    for ( typename QList<Node>::Iterator itor = d->begin();
-          itor != d->end(); itor++ )
+    //找到key，再处理，不能直接处理list。
+    //template <class Key, class T>
+    Q_OUTOFLINE_TEMPLATE int remove ( const Key& akey )
     {
-        Node* n = &*itor;
-        if ( n->first == akey )
+        detach();
+
+        typename QList<Node>::Iterator p = d->end();
+
+        for ( typename QList<Node>::Iterator itor = d->begin();
+              itor != d->end(); itor++ )
         {
-            return n->second;
+            Node* n = &*itor;
+            if ( n->first == akey )
+            {
+                p = itor;
+                break;
+            }
         }
+
+        Node* n = &*p;
+        int cnt = d->removeAll ( *n );
+
+        return cnt;
     }
-    return *insert ( akey, T() );
-}
 
-template <class Key, class T>
-Q_INLINE_TEMPLATE int QOrderedMap<Key, T>::count ( const Key& akey ) const
-{
-    int cnt = 0;
-    for ( typename QList<Node>::Iterator itor = d->begin();
-          itor != d->end(); itor++ )
+    //template <class Key, class T>
+    Q_OUTOFLINE_TEMPLATE T take ( const Key& akey )
     {
-        Node* n = &*itor;
-        if ( n->first == akey )
-            cnt++;
-    }
-    return cnt;
-}
+        detach();
 
-template <class Key, class T>
-Q_INLINE_TEMPLATE bool QOrderedMap<Key, T>::contains ( const Key& akey ) const
-{
-    for ( typename QList<Node>::Iterator itor = d->begin();
-          itor != d->end(); itor++ )
-    {
-        Node* n = &*itor;
-        if ( n->first == akey )
-            return true;
-    }
-    return false;
-}
+        typename QList<Node>::Iterator p = d->end();
 
-template <class Key, class T>
-Q_INLINE_TEMPLATE typename QOrderedMap<Key, T>::iterator QOrderedMap<Key, T>::insert ( const Key& akey,
-        const T& avalue )
-{
-    detach();
-
-    Node n;
-    n.first = akey;
-    n.second = avalue;
-
-    for ( int i = 0 ; i < d->size(); i++ )
-    {
-        Node* n_now = &d->operator [] ( i );
-        if ( n_now->first == akey )
+        for ( typename QList<Node>::Iterator itor = d->begin();
+              itor != d->end(); itor++ )
         {
-            *n_now = n;
-            return iterator ( n_now, d );
+            Node* n = &*itor;
+            if ( n->first == akey )
+            {
+                p = itor;
+                break;
+            }
         }
+
+        if ( p == d->end() )
+            return T();
+
+        Node* n = &*p;
+        T v = n->second;
+        d->removeAll ( *n );
+
+        return v;
     }
 
-    d->push_back ( n );
-    Node* z = &d->last();
-
-    return iterator ( z, d );
-}
-
-//need more test
-template <class Key, class T>
-typename QOrderedMap<Key, T>::iterator QOrderedMap<Key, T>::insert ( const_iterator pos, const Key& akey,
-                                                                     const T& avalue )
-{
-    detach();
-
-    Node n;
-    n.first = akey;
-    n.second = avalue;
-
-    for ( int i = 0 ; i < d->size(); i++ )
+    //template <class Key, class T>
+    Q_OUTOFLINE_TEMPLATE typename iterator erase ( iterator it )
     {
-        Node* n_now = &d->operator [] ( i );
-        if ( n_now->first == akey )
-        {
-            *n_now = n;
-            return iterator ( n_now, d );
-        }
-    }
+        if ( it == iterator ( d->end(), d ) )
+            return it;
 
-    for ( typename QList<Node>::Iterator itor = d->begin();
-          itor != d->end(); itor++ )
-    {
-        Node* n_before = itor;
-        const_iterator p ( n_before, d );
-        if ( p == pos )
-        {
-            typename QList<Node>::Iterator i = d->insert ( itor, n );
-            Node* cur = &*i;
-            return iterator ( cur, d );
-        }
-    }
-
-    d->push_back ( n );
-    Node* z = &d->last();
-    return iterator ( z, d );
-}
-
-template <class Key, class T>
-Q_INLINE_TEMPLATE typename QOrderedMap<Key, T>::iterator QOrderedMap<Key, T>::insertMulti ( const Key& akey,
-        const T& avalue )
-{
-    detach();
-#if 0
-    Node n;
-    n.first = akey;
-    n.second = avalue;
-    d->push_back ( n );
-
-    Node* z = d->last();
-    return iterator ( z );
-#endif
-    return insert ( akey, avalue );
-}
-
-//need more test
-template <class Key, class T>
-typename QOrderedMap<Key, T>::iterator QOrderedMap<Key, T>::insertMulti ( const_iterator pos, const Key& akey,
-                                                                          const T& avalue )
-{
-    Node n;
-    n.first = akey;
-    n.second = avalue;
-
-    for ( typename QList<Node>::Iterator itor = d->begin();
-          itor != d->end(); itor++ )
-    {
-        Node* n_before = &*itor;
-        const_iterator p ( n_before );
-        if ( p == pos )
-        {
-            typename QList<Node>::Iterator i = d->insert ( itor, n );
-            Node* n_now = &*i;
-            return iterator ( n_now, d );
-        }
-    }
-    d->push_back ( n );
-    Node* n_now = &d->last();
-    return iterator ( n_now, d );
-}
-
-
-template <class Key, class T>
-Q_INLINE_TEMPLATE typename QOrderedMap<Key, T>::const_iterator QOrderedMap<Key, T>::constFind (
-    const Key& akey ) const
-{
-    for ( typename QList<Node>::ConstIterator itor = d->constBegin();
-          itor != d->constEnd(); itor++ )
-    {
-        Node* n = &*itor;
-        if ( n->first == akey )
-        {
-            return const_iterator ( n, d );
-        }
-    }
-
-    return constEnd();
-}
-
-template <class Key, class T>
-Q_INLINE_TEMPLATE typename QOrderedMap<Key, T>::const_iterator QOrderedMap<Key, T>::find ( const Key& akey ) const
-{
-    return constFind ( akey );
-}
-
-template <class Key, class T>
-Q_INLINE_TEMPLATE typename QOrderedMap<Key, T>::iterator QOrderedMap<Key, T>::find ( const Key& akey )
-{
-    detach();
-    for ( typename QList<Node>::Iterator itor = d->begin();
-          itor != d->end(); itor++ )
-    {
-        Node* n = &*itor;
-        if ( n->first == akey )
-        {
-            return iterator ( n, d );
-        }
-    }
-
-    return end();
-}
-
-//need
-template <class Key, class T>
-Q_INLINE_TEMPLATE QOrderedMap<Key, T>& QOrderedMap<Key, T>::unite ( const QOrderedMap<Key, T>& other )
-{
-    QOrderedMap<Key, T> copy ( other );
-    const_iterator it = copy.constEnd();
-    const const_iterator b = copy.constBegin();
-    while ( it != b )
-    {
-        --it;
-        insertMulti ( it.key(), it.value() );
-    }
-    return *this;
-}
-
-//need
-template <class Key, class T>
-QPair<typename QOrderedMap<Key, T>::iterator, typename QOrderedMap<Key, T>::iterator>
-QOrderedMap<Key, T>::equal_range ( const Key& akey )
-{
-    detach();
-
-    Node* firstNode, *lastNode;
-
-    for ( typename QList<Node>::Iterator itor = d->begin();
-          itor != d->end(); itor++ )
-    {
-        Node* n = &*itor;
-        if ( n->first == akey )
-        {
-            firstNode = n;
-            break;
-        }
-    }
-
-    if ( iterator ( firstNode, d ) == end() )
-        return QPair<iterator, iterator> ( end(), end() );
-
-    for ( typename QList<Node>::Iterator itor = d->end() - 1;
-          itor >= d->begin(); itor-- )
-    {
-        Node* n = &*itor;
-        if ( n->first == akey )
-        {
-            lastNode = n;
-            break;
-        }
-    }
-
-    //d->nodeRange ( akey, &firstNode, &lastNode );
-    return QPair<iterator, iterator> ( iterator ( firstNode, d ), iterator ( lastNode, d ) );
-}
-
-template <class Key, class T>
-QPair<typename QOrderedMap<Key, T>::const_iterator, typename QOrderedMap<Key, T>::const_iterator>
-QOrderedMap<Key, T>::equal_range ( const Key& akey ) const
-{
-    Node* firstNode, *lastNode;
-
-    for ( typename QList<Node>::ConstIterator itor = d->constBegin();
-          itor != d->constEnd(); itor++ )
-    {
-        Node* n = &*itor;
-        if ( n->first == akey )
-        {
-            firstNode = n;
-            break;
-        }
-    }
-
-    if ( iterator ( firstNode, d ) == constEnd() )
-        return qMakePair ( constEnd(), constEnd() );
-
-    for ( typename QList<Node>::Iterator itor = d->constEnd() - 1;
-          itor >= d->constBegin(); itor-- )
-    {
-        Node* n = &*itor;
-        if ( n->first == akey )
-        {
-            lastNode = n;
-            break;
-        }
-    }
-
-    //d->nodeRange ( akey, &firstNode, &lastNode );
-    return qMakePair ( const_iterator ( firstNode, d ), const_iterator ( lastNode, d ) );
-}
-
-#ifdef Q_MAP_DEBUG
-template <class Key, class T>
-void QOrderedMap<Key, T>::dump() const
-{
-    for ( typename QList<Node>::ConstIterator itor = d->constBegin();
-          itor != d->constEnd(); itor++ )
-    {
-        const Node* n = &*itor;
-        qDebug() << n->first << n->second;
-    }
-}
-#endif
-
-//找到key，再处理，不能直接处理list。
-template <class Key, class T>
-Q_OUTOFLINE_TEMPLATE int QOrderedMap<Key, T>::remove ( const Key& akey )
-{
-    detach();
-
-    typename QList<Node>::Iterator p = d->end();
-
-    for ( typename QList<Node>::Iterator itor = d->begin();
-          itor != d->end(); itor++ )
-    {
-        Node* n = &*itor;
-        if ( n->first == akey )
-        {
-            p = itor;
-            break;
-        }
-    }
-
-    Node* n = &*p;
-    int cnt = d->removeAll ( *n );
-
-    return cnt;
-}
-
-template <class Key, class T>
-Q_OUTOFLINE_TEMPLATE T QOrderedMap<Key, T>::take ( const Key& akey )
-{
-    detach();
-
-    typename QList<Node>::Iterator p = d->end();
-
-    for ( typename QList<Node>::Iterator itor = d->begin();
-          itor != d->end(); itor++ )
-    {
-        Node* n = &*itor;
-        if ( n->first == akey )
-        {
-            p = itor;
-            break;
-        }
-    }
-
-    if ( p == d->end() )
-        return T();
-
-    Node* n = &*p;
-    T v = n->second;
-    d->removeAll ( *n );
-
-    return v;
-}
-
-template <class Key, class T>
-Q_OUTOFLINE_TEMPLATE typename QOrderedMap<Key, T>::iterator QOrderedMap<Key, T>::erase ( iterator it )
-{
-    if ( it == iterator ( d->end(), d ) )
+        Node* n = &*it;
+        ++it;
+        d->removeAll ( n );
         return it;
-
-    Node* n = &*it;
-    ++it;
-    d->removeAll ( n );
-    return it;
-}
-
-template <class Key, class T>
-Q_OUTOFLINE_TEMPLATE void QOrderedMap<Key, T>::detach_helper()
-{
-    d->detach();
-}
-
-template <class Key, class T>
-Q_OUTOFLINE_TEMPLATE QList<Key> QOrderedMap<Key, T>::uniqueKeys() const
-{
-    QList<Key> res;
-    for ( typename QList<Node>::Iterator itor = d->begin();
-          itor != d->end(); itor++ )
-    {
-        Node* node = &*itor;
-        const Key& key = node->first;
-        if ( res.contains ( key ) )
-            continue;
-        res.push_back ( key );
     }
-    return res;
-}
 
-template <class Key, class T>
-Q_OUTOFLINE_TEMPLATE QList<Key> QOrderedMap<Key, T>::keys() const
-{
-    QList<Key> res;
-
-    const_iterator i = begin();
-    while ( i != end() )
+    //template <class Key, class T>
+    Q_OUTOFLINE_TEMPLATE void detach_helper()
     {
-        res.push_back ( i.key() );
-        ++i;
+        d->detach();
     }
-    return res;
-}
 
-template <class Key, class T>
-Q_OUTOFLINE_TEMPLATE QList<Key> QOrderedMap<Key, T>::keys ( const T& avalue ) const
-{
-    QList<Key> res;
-
-    const_iterator i = begin();
-    while ( i != end() )
+    //template <class Key, class T>
+    Q_OUTOFLINE_TEMPLATE QList<Key> uniqueKeys() const
     {
-        if ( i.value() == avalue )
+        QList<Key> res;
+        for ( typename QList<Node>::Iterator itor = d->begin();
+              itor != d->end(); itor++ )
+        {
+            Node* node = &*itor;
+            const Key& key = node->first;
+            if ( res.contains ( key ) )
+                continue;
+            res.push_back ( key );
+        }
+        return res;
+    }
+
+    //template <class Key, class T>
+    Q_OUTOFLINE_TEMPLATE QList<Key> keys() const
+    {
+        QList<Key> res;
+
+        const_iterator i = begin();
+        while ( i != end() )
+        {
             res.push_back ( i.key() );
-        ++i;
-    }
-    return res;
-}
-
-template <class Key, class T>
-Q_OUTOFLINE_TEMPLATE const Key QOrderedMap<Key, T>::key ( const T& avalue, const Key& defaultKey ) const
-{
-    const_iterator i = begin();
-    while ( i != end() )
-    {
-        if ( i.value() == avalue )
-            return i.key();
-        ++i;
+            ++i;
+        }
+        return res;
     }
 
-    return defaultKey;
-}
-
-template <class Key, class T>
-Q_OUTOFLINE_TEMPLATE QList<T> QOrderedMap<Key, T>::values() const
-{
-    QList<T> res;
-
-    const_iterator i = begin();
-    while ( i != end() )
+    //template <class Key, class T>
+    Q_OUTOFLINE_TEMPLATE QList<Key> keys ( const T& avalue ) const
     {
-        res.push_back ( i.value() );
-        ++i;
+        QList<Key> res;
+
+        const_iterator i = begin();
+        while ( i != end() )
+        {
+            if ( i.value() == avalue )
+                res.push_back ( i.key() );
+            ++i;
+        }
+        return res;
     }
-    return res;
-}
 
-template <class Key, class T>
-Q_OUTOFLINE_TEMPLATE QList<T> QOrderedMap<Key, T>::values ( const Key& akey ) const
-{
-    QList<T> res;
-
-    const_iterator i = begin();
-    while ( i != end() )
+    //template <class Key, class T>
+    Q_OUTOFLINE_TEMPLATE const Key key ( const T& avalue, const Key& defaultKey = Key() ) const
     {
-        if ( i.key() == akey )
+        const_iterator i = begin();
+        while ( i != end() )
+        {
+            if ( i.value() == avalue )
+                return i.key();
+            ++i;
+        }
+
+        return defaultKey;
+    }
+
+    //template <class Key, class T>
+    Q_OUTOFLINE_TEMPLATE QList<T> values() const
+    {
+        QList<T> res;
+
+        const_iterator i = begin();
+        while ( i != end() )
+        {
             res.push_back ( i.value() );
-        ++i;
+            ++i;
+        }
+        return res;
     }
-    return res;
-}
 
-template <class Key, class T>
-Q_OUTOFLINE_TEMPLATE bool QOrderedMap<Key, T>::operator== ( const QOrderedMap<Key, T>& other ) const
-{
-    if ( size() != other.size() )
-        return false;
-
-    if ( _d != other._d )
-        return false;
-
-    return true;
-}
-
-template <class Key, class T>
-Q_OUTOFLINE_TEMPLATE QOrderedMap<Key, T>::QOrderedMap ( const std::map<Key, T>& other )
-{
-    d->clear();
-    typename std::map<Key, T>::const_iterator it = other.begin();
-    while ( it != other.end() )
+    //template <class Key, class T>
+    Q_OUTOFLINE_TEMPLATE QList<T> values ( const Key& akey ) const
     {
-        Node node;
-        node.first = ( *it ).first;
-        node.second = ( *it ).second;
-        d->push_back ( node );
-        ++it;
+        QList<T> res;
+
+        const_iterator i = begin();
+        while ( i != end() )
+        {
+            if ( i.key() == akey )
+                res.push_back ( i.value() );
+            ++i;
+        }
+        return res;
     }
-}
 
-template <class Key, class T>
-Q_OUTOFLINE_TEMPLATE std::map<Key, T> QOrderedMap<Key, T>::toStdMap() const
-{
-    std::map<Key, T> amap;
-
-    const_iterator it = begin();
-    while ( it != end() )
+    //template <class Key, class T>
+    Q_OUTOFLINE_TEMPLATE bool operator== ( const QOrderedMap<Key, T>& other ) const
     {
-        amap.insert ( amap.end(), std::pair<Key, T> ( it.key(), it.value() ) );
-        ++it;
-    }
-    return amap;
-}
+        if ( size() != other.size() )
+            return false;
 
+        if ( _d != other._d )
+            return false;
+
+        return true;
+    }
+
+    //template <class Key, class T>
+    Q_OUTOFLINE_TEMPLATE QOrderedMap ( const typename std::map<Key, T>& other )
+    {
+        d->clear();
+        typename std::map<Key, T>::const_iterator it = other.begin();
+        while ( it != other.end() )
+        {
+            Node node;
+            node.first = ( *it ).first;
+            node.second = ( *it ).second;
+            d->push_back ( node );
+            ++it;
+        }
+    }
+
+    //template <class Key, class T>
+    Q_OUTOFLINE_TEMPLATE std::map<Key, T> toStdMap() const
+    {
+        std::map<Key, T> amap;
+
+        const_iterator it = begin();
+        while ( it != end() )
+        {
+            amap.insert ( amap.end(), std::pair<Key, T> ( it.key(), it.value() ) );
+            ++it;
+        }
+        return amap;
+    }
+};
 template <class Key, class T>
 class QQTSHARED_EXPORT QOrderedMultiMap : public QOrderedMap<Key, T>
 {
@@ -1011,11 +1011,11 @@ QOrderedMultiMap ( QOrderedMap<Key, T>&& other ) Q_DECL_NOTHROW : QOrderedMap<Ke
     using QOrderedMap<Key, T>::find;
     using QOrderedMap<Key, T>::constFind;
 
-    bool contains ( const Key& key, const T& value ) const;
+    //bool contains ( const Key& key, const T& value ) const;
 
-    int remove ( const Key& key, const T& value );
+    //int remove ( const Key& key, const T& value );
 
-    int count ( const Key& key, const T& value ) const;
+    //int count ( const Key& key, const T& value ) const;
 
     typename QOrderedMap<Key, T>::iterator find ( const Key& key, const T& value ) {
         typename QOrderedMap<Key, T>::iterator i ( find ( key ) );
@@ -1042,50 +1042,50 @@ QOrderedMultiMap ( QOrderedMap<Key, T>&& other ) Q_DECL_NOTHROW : QOrderedMap<Ke
 private:
     T& operator[] ( const Key& key );
     const T operator[] ( const Key& key ) const;
-};
+public:
 
-template <class Key, class T>
-Q_INLINE_TEMPLATE bool QOrderedMultiMap<Key, T>::contains ( const Key& key, const T& value ) const
-{
-    return constFind ( key, value ) != QOrderedMap<Key, T>::constEnd();
-}
-
-template <class Key, class T>
-Q_INLINE_TEMPLATE int QOrderedMultiMap<Key, T>::remove ( const Key& key, const T& value )
-{
-    int n = 0;
-    typename QOrderedMap<Key, T>::iterator i ( find ( key ) );
-    typename QOrderedMap<Key, T>::iterator end ( QOrderedMap<Key, T>::end() );
-    while ( i != end && !QQtMapLessThanKey<Key> ( key, i.key() ) )
+    //template <class Key, class T>
+    Q_INLINE_TEMPLATE bool contains ( const Key& key, const T& value ) const
     {
-        if ( i.value() == value )
+        return constFind ( key, value ) != QOrderedMap<Key, T>::constEnd();
+    }
+
+    //template <class Key, class T>
+    Q_INLINE_TEMPLATE int remove ( const Key& key, const T& value )
+    {
+        int n = 0;
+        typename QOrderedMap<Key, T>::iterator i ( find ( key ) );
+        typename QOrderedMap<Key, T>::iterator end ( QOrderedMap<Key, T>::end() );
+        while ( i != end && !QQtMapLessThanKey<Key> ( key, i.key() ) )
         {
-            i = this->erase ( i );
-            ++n;
+            if ( i.value() == value )
+            {
+                i = this->erase ( i );
+                ++n;
+            }
+            else
+            {
+                ++i;
+            }
         }
-        else
+        return n;
+    }
+
+    //template <class Key, class T>
+    Q_INLINE_TEMPLATE int count ( const Key& key, const T& value ) const
+    {
+        int n = 0;
+        typename QOrderedMap<Key, T>::const_iterator i ( constFind ( key ) );
+        typename QOrderedMap<Key, T>::const_iterator end ( QOrderedMap<Key, T>::constEnd() );
+        while ( i != end && !QQtMapLessThanKey<Key> ( key, i.key() ) )
         {
+            if ( i.value() == value )
+                ++n;
             ++i;
         }
+        return n;
     }
-    return n;
-}
-
-template <class Key, class T>
-Q_INLINE_TEMPLATE int QOrderedMultiMap<Key, T>::count ( const Key& key, const T& value ) const
-{
-    int n = 0;
-    typename QOrderedMap<Key, T>::const_iterator i ( constFind ( key ) );
-    typename QOrderedMap<Key, T>::const_iterator end ( QOrderedMap<Key, T>::constEnd() );
-    while ( i != end && !QQtMapLessThanKey<Key> ( key, i.key() ) )
-    {
-        if ( i.value() == value )
-            ++n;
-        ++i;
-    }
-    return n;
-}
-
+};
 Q_DECLARE_ASSOCIATIVE_ITERATOR ( OrderedMap )
 Q_DECLARE_MUTABLE_ASSOCIATIVE_ITERATOR ( OrderedMap )
 

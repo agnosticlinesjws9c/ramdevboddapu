@@ -2,16 +2,19 @@
 #include "ui_mainwindow.h"
 
 #include <qqtcore.h>
-#include <qqtdictionary.h>
 
-//#define QDictionary QQtDictionary
-typedef QQtDictionary QDictionary;
-
-
+// 2021年4月1日
 // BAD EXPORT FOUND [MSVC2015]
+// MSVC2015，不使用QQtOrderedDictionary就可以了，其他模块正常。
+
+// 2021年4月23日
+// 已解决
+
+
+#include <qqtorderedmap.h>
 #include <qqtordereddictionary.h>
 
-//#include <qqtordereddictionary.h>
+#include <qqtdicthelper.h>
 
 
 MainWindow::MainWindow(QWidget *parent) :
@@ -19,14 +22,17 @@ MainWindow::MainWindow(QWidget *parent) :
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
-    pline() << "aaa";
-    QDictionary d1;
-    d1["b"] = 'b';
-    pline() << d1;
 
-    //QQtOrderedDictionary d2;
-    //d2["b"] = 'b';
-    //d2["a"] = 'a';
+    pline() << "aaa";
+    QQtOrderedDictionary d2;
+    d2["b"] = 'b';
+    d2["a"] = 'a';
+    d2["c"] = "This is a string.";
+    d2["d"] = QQtOrderedDictionary();
+    d2["d"]["d_1"] = "What? coming?";
+
+    pline() << d2;
+    pline() << d2["d"];
 }
 
 MainWindow::~MainWindow()
