@@ -37,8 +37,13 @@ QQtNetworkReply& QQtNetworkReply::operator = ( const QNetworkReply& other )
         setRawHeader ( key, other.rawHeader ( key ) );
     }
 
+#if QT_VERSION > QT_VERSION_CHECK(5, 9, 0)
     for ( int i = ( int ) QNetworkRequest::HttpStatusCodeAttribute;
           i <= ( int ) QNetworkRequest::RedirectPolicyAttribute; i++ )
+#else
+    for ( int i = ( int ) QNetworkRequest::HttpStatusCodeAttribute;
+          i <= ( int ) QNetworkRequest::HTTP2WasUsedAttribute; i++ )
+#endif
     {
         QNetworkRequest::Attribute ii = ( QNetworkRequest::Attribute ) i;
         setAttribute ( ii, other.attribute ( ii ) );
