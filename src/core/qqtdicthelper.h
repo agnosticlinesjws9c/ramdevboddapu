@@ -27,9 +27,9 @@ typedef QQtOrderedDictionaryListIterator QOrderedDictionaryListIterator;
 typedef QQtOrderedDictionaryMutableListIterator QOrderedDictionaryMutableListIterator;
 
 //C++ []操作符重载超过两层就不能赋值给引用变量了，所以这里对于获取深层引用进行封装。
-QQtDictionary& QQtGetDictNode ( QQtDictionary& rootDict,
+QQTSHARED_EXPORT QQtDictionary& QQtGetDictNode ( QQtDictionary& rootDict,
                                 QList<QString>& keyList1, bool numberAsString = false );
-QQtOrderedDictionary& QQtGetDictNode ( QQtOrderedDictionary& rootDict,
+QQTSHARED_EXPORT QQtOrderedDictionary& QQtGetDictNode ( QQtOrderedDictionary& rootDict,
                                        QList<QString>& keyList1, bool numberAsString = false );
 
 #endif // QQTDICTHELPER_H
