@@ -80,7 +80,7 @@ void QQtBodyMouseWheelScalingEffect::wheelEvent ( QWheelEvent* event, QWidget* t
         width = qr0.width();
         height = qr0.height();
         if ( width == 0 )
-            width = 0.1;
+            width = 1;
 
         qreal aspio2 = ( qreal ) height / width;
 
